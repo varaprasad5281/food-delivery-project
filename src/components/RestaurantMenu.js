@@ -17,14 +17,14 @@ const {resId}=useParams()
     },[])
 
     const fetchMenu=async()=>{
-        const data= await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.385044&lng=78.486671&restaurantId="+resId)
+        const data= await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.37240&lng=78.43780&restaurantId="+resId)
         const json=await data.json()
         console.log(json)
         setResInfo(json.data)
     }
     if(resInfo===null) return <Shimmer/>;
     const{name,city,areaName,cuisines,avgRating,costForTwoMessage,availabilityServiceabilityMessage}=resInfo.cards[2].card.card.info;
-    const{itemCards}=resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
+    const{itemCards}=resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[2].card.card
     console.log(itemCards)
     return(
         <div>

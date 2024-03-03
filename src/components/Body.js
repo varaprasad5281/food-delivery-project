@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
     const [resList, setRestaurantList] = useState(null);
@@ -21,7 +22,7 @@ const Body = () => {
 
     async function getRestaurant() {
         try {
-            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.624480699999999&page_type=DESKTOP_WEB_LISTING");
+            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.37240&lng=78.43780&page_type=DESKTOP_WEB_LISTING");
             if (!response.ok) {
                 throw new Error("Failed to fetch data");
             }
@@ -36,7 +37,7 @@ const Body = () => {
     }
 
     function filterRestaurants() {
-        const filteredList = resList.cards[2].card.card.gridElements.infoWithStyle.restaurants.filter(item =>
+        const filteredList = resList?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.filter(item =>
             item.info.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
         setFilteredResList(filteredList);
@@ -55,7 +56,7 @@ const Body = () => {
     }
 
     // Determine which list of restaurants to display based on search query
-    const displayList = searchQuery.length > 0 ? filteredResList : resList.cards[2].card.card.gridElements.infoWithStyle.restaurants;
+    const displayList = searchQuery.length > 0 ? filteredResList : resList?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     return (
         <div className="main">
             < input className="input"
@@ -67,7 +68,7 @@ const Body = () => {
             <div className="res-list">
             
             {displayList.map((item) => (
-                <div key={item.info.id} className="res-card">
+                <Link className="res-link" to={"/restaurants/"+item.info.id} key={item.info.id}><div className="res-card">
                     <img className="res-images" alt="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_100,h_100,c_fill/"+item.info.cloudinaryImageId} ></img>
                     <h3>{item.info.name}</h3>
                     <h4 key={item.id}> {item.info.areaName}</h4>
@@ -81,6 +82,7 @@ const Body = () => {
                     <p>{item.info.cuisines.join(", ")}</p>
 
                 </div>
+                </Link>
             ))}
         </div>
         </div>
