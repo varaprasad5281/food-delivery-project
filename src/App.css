@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
+.App{
+  font-family: 'Segoe UI', Tahoma,Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+  box-sizing: border-box;
+  font-family:'Segoe UI'
+}
+h1{
+  line-height: normal;
+}
+.res-card{
+text-align: center;
+  border: 1px solid orange;
+  border-radius:8px ;
+  position: relative;
+  padding: 20px;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.res-list{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  grid-gap: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.shimmer-container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  grid-gap: 20px;
 }
+.restaurant-list{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+}
+.shimer-card{
+  height: 350px;
+  background-color: lightgrey;
+  margin: 20px;
+  border-radius: 15px;
+}
+h2.offer{
+  position: absolute;
+  top:30%;
+  right:30px;
+  font-weight: bold;
+  color:orangered;
+}
+.card-bottom{
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+.nav{
+  display:flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 80px;
+  background-color: black;
   color: white;
+  padding:8px 50px;
 }
+.list-items{
+  display:flex;
+  gap: 10px;
+  list-style-type: none;
+  padding-left: 0px;
+  text-decoration: none;
 
-.App-link {
-  color: #61dafb;
+}  
+.list-items a{
+  text-decoration: none;
 }
+ .list-items li{
+  padding: 8px 13px;
+  color: white;
+  text-transform: uppercase;
+  
+  text-decoration: none;
+  list-style: none;
+  border-radius: 10px;
+  font-size: 18px;
+}
+.list-items li:hover{
+  font-weight: bold;
+  background-color:orange;
+  color: black;
+}
+.res-images{
+  width: 100%;
+  border-radius: 10px;
+  height: 170px;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.res-images:hover{
+  transform: scale(1.1);
+}
+.input{
+  padding: 8px 13px;
+  width:fit-content;
+  border-radius: 4px;
+  border:2px solid orange;
+}
+.main{
+  display:flex;
+  flex-direction: column;
+  gap: 30px;
+  padding:20px 50px;
+}
+.offer{
+  position:absolute;
+}
+.res-link{
+  text-decoration: none;
+  height:100%;
+  color: black;
 }
