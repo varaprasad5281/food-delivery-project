@@ -70,6 +70,7 @@ h2.offer{
 }  
 .list-items a{
   text-decoration: none;
+
 }
  .list-items li{
   padding: 8px 13px;
@@ -88,13 +89,12 @@ h2.offer{
 }
 .res-images{
   width: 100%;
-  border-radius: 10px;
-  height: 170px;
+  border-radius: 15px;
+  height:100%;
+  object-fit: contain;
 
 }
-.res-images:hover{
-  transform: scale(1.1);
-}
+
 .input{
   padding: 8px 13px;
   width:fit-content;
@@ -113,5 +113,36 @@ h2.offer{
 .res-link{
   text-decoration: none;
   height:100%;
+  transition: all o.3s ease-out;
   color: black;
+}
+.res-link:hover{
+  transform: scale(0.97);
+
+}
+.menu-list{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 0% 10%;
+}
+.menu-image{
+  width: 118px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 6px;
+  object-fit: contain;
+}
+.badge{
+  display: inline-block;
+  line-height: 1.15rem;
+  font-size: .93rem;
+  color: #ee9c00;
+  font-weight: 500;
+}
+.menu-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

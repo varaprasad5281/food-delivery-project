@@ -37,7 +37,20 @@ const {resId}=useParams()
            <ul>
             {itemCards.map((item)=>{
                 return(
-                    <li key={item.card.info.id}>{item.card.info.name} - Rs. {(item.card.info.price/100) || item.card.info.price || 0}</li>
+                    <React.Fragment>
+                        <div className="menu-list">
+                           <div className="menu-details">
+                              <h4 className="badge">{item.card.info.ribbon.text}</h4>
+                              <li key={item.card.info.id}>{item.card.info.name}</li>
+                              <h3 key={item.card.info.id}>Rs. {(item.card.info.price/100) || item.card.info.price || "Not Available"}</h3>
+                              <p>{item.card.info.description}</p>
+                            </div>
+                            <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+item.card.info.imageId} alt="menu-image" className="menu-image"></img>
+                        </div>
+                        <hr/>
+                    </React.Fragment>
+                    
+
                 )
             })}
 
