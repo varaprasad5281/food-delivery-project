@@ -115,3 +115,8 @@ h2.offer{
   height:100%;
   color: black;
 }
+
+.user-card{
+  padding: 20px;
+  border: 1px solid salmon;
+}

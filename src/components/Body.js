@@ -22,7 +22,7 @@ const Body = () => {
 
     async function getRestaurant() {
         try {
-            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.37240&lng=78.43780&page_type=DESKTOP_WEB_LISTING");
+            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4367684&lng=78.40071019999999&page_type=DESKTOP_WEB_LISTING");
             if (!response.ok) {
                 throw new Error("Failed to fetch data");
             }
