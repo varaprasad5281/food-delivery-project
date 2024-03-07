@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { MdStars } from "react-icons/md";
+import { RES_CDN_URL } from "../constants";
+
 
 const Body = () => {
     const [resList, setRestaurantList] = useState(null);
@@ -22,7 +25,7 @@ const Body = () => {
 
     async function getRestaurant() {
         try {
-            const response = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4367684&lng=78.40071019999999&page_type=DESKTOP_WEB_LISTING");
+            const response = await fetch(RES_CDN_URL);
             if (!response.ok) {
                 throw new Error("Failed to fetch data");
             }
@@ -57,6 +60,8 @@ const Body = () => {
 
     // Determine which list of restaurants to display based on search query
     const displayList = searchQuery.length > 0 ? filteredResList : resList?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+    const mainContent=resList?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     return (
         <div className="main">
             < input className="input"
@@ -66,23 +71,22 @@ const Body = () => {
                 onChange={handleSearchInputChange}
             />
             <div className="res-list">
-            
             {displayList && displayList.map((item) => (
-                <Link className="res-link" to={"/restaurants/"+item.info.id} key={item.info.id}><div className="res-card">
-                    <img className="res-images" alt="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_100,h_100,c_fill/"+item.info.cloudinaryImageId} ></img>
-                    <h3>{item.info.name}</h3>
-                    <h4 key={item.id}> {item.info.areaName}</h4>
-                    <h2 className="offer"> {item.info.aggregatedDiscountInfoV2.header}</h2>
-                    <div className="card-bottom">
-                        <h4> {item?.info?.avgRating}</h4>
-                        <h4> {item.info.costForTwo}</h4>
-                    <h4>{item.info.sla.deliveryTime} Mins</h4>
 
+                  <Link className="res-link" to={"/restaurants/"+item.info.id} key={item.info.id}>
+                    <div className="res-card">
+                       <div className="res-image-container"><img className="res-images" alt="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_100,h_100,c_fill/"+item.info.cloudinaryImageId} ></img></div>
+                       <div className="card-body">
+                          <p className="res-name">{item.info.name}</p>
+                          <p className="res-rating"><MdStars className="rating-icon" /> {item?.info?.avgRating} - {item.info.sla.slaString}</p>
+                          <h2 className="offer"> {item.info.aggregatedDiscountInfoV2?.header}</h2>
+                          <p className="res-cuisines">{item.info.cuisines.join(", ")}</p>
+                          <p className="res-area" key={item.id}> {item.info.areaName}</p>
+                       </div>
+                       
                     </div>
-                    <p>{item.info.cuisines.join(", ")}</p>
-
-                </div>
                 </Link>
+                
             ))}
         </div>
         </div>

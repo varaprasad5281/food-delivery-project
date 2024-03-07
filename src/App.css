@@ -4,24 +4,29 @@
   margin: 0;
   line-height: normal;
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
   font-family:'Segoe UI'
 }
 h1{
   line-height: normal;
 }
+.logo {
+  color: white;
+  text-decoration: none;
+}
 .res-card{
-text-align: center;
-  border: 1px solid orange;
-  border-radius:8px ;
+text-align: left;
+  justify-content: stretch;
   position: relative;
   padding: 20px;
+  height: auto;
 
 }
 
 .res-list{
   display:grid;
   grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-  grid-gap: 20px;
 }
 
 .shimmer-container{
@@ -42,14 +47,13 @@ text-align: center;
 }
 h2.offer{
   position: absolute;
-  top:30%;
-  right:30px;
-  font-weight: bold;
-  color:orangered;
-}
-.card-bottom{
-  display: flex;
-  justify-content: space-between;
+  top:40%;
+  left:30px;
+  font-weight: 800;
+    font-size: 22px;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+    color: rgba(255, 255, 255, 0.92);
 }
 .nav{
   display:flex;
@@ -88,13 +92,19 @@ h2.offer{
   color: black;
 }
 .res-images{
-  width: 100%;
-  border-radius: 15px;
-  height:100%;
-  object-fit: contain;
+  position: relative;
+  width:100%;
+  overflow-clip-margin: content-box;
+    overflow: clip;
+  height: 100%;
+  border-radius: 16px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
 
 }
-
+.res-image-container{
+  height: 208px;
+  object-fit: contain;
+}
 .input{
   padding: 8px 13px;
   width:fit-content;
@@ -113,8 +123,10 @@ h2.offer{
 .res-link{
   text-decoration: none;
   height:100%;
-  transition: all o.3s ease-out;
-  color: black;
+  max-width: 400px;
+  color: rgba(2, 6, 12, 0.75);
+  height: auto;
+  transition: all 0.05s ease 0s;
 }
 .res-link:hover{
   transform: scale(0.97);
@@ -123,14 +135,15 @@ h2.offer{
 .menu-list{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 30px;
-  padding: 0% 10%;
+  padding: 20px 0px;
 }
 .menu-image{
   width: 118px;
   height: 96px;
   object-fit: cover;
-  border-radius: 6px;
+  border-radius: 10px;
   object-fit: contain;
 }
 .badge{
@@ -151,4 +164,71 @@ h2.offer{
 .user-card{
   padding: 20px;
   border: 1px solid salmon;
+}
+
+.res-name,.res-rating{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 14px;
+  letter-spacing: -0.3px;
+  color: rgba(2, 6, 12, 0.75);
+}
+.res-cuisines,.res-area{
+  line-height: 14px;
+}
+.rating-icon{
+  color: green;
+}
+.card-body{
+  padding-left: 10px;
+}
+.res-menu-image{
+  position: relative;
+  height: 96px;
+}
+.add-item{
+  position:absolute;
+  width: 96px;
+  height: 36px;
+  bottom: 18px;
+  left: 15%;
+  display: inline-block;
+  height: 30px;
+  width: 83px;
+  border: 1px solid #d4d5d9;
+  color: #60b246;
+  font-size: .9rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  line-height: 30px;
+  border-radius: 6px;
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 3px 8px #e9e9eb;
+
+}
+.res-menu-img,.menu-image{
+  width: 118px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.res-menu{
+  padding: 4% 10%;
+
+}
+.divider{
+  border-bottom: 1px dashed gray;
+}
+.list-menu{
+  list-style: none;
+}
+.menu-divider{
+  border-bottom: 0.5px solid rgb(212, 199, 199);
+}
+.item-cost{
+  font-weight:500;
 }
