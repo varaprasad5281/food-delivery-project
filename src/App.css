@@ -217,8 +217,9 @@ h2.offer{
   border-radius: 8px;
 }
 .res-menu{
-  padding: 4% 10%;
-
+  max-width: 1000px;
+  padding-top: 100px;
+  margin: 0 auto;
 }
 .divider{
   border-bottom: 1px dashed gray;
