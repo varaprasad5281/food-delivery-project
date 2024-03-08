@@ -8,6 +8,7 @@ import { MdStars } from "react-icons/md";
 const RestaurantMenu=()=>{
 
     const[resInfo,setResInfo]=useState(null)
+    const[addItem,setAddItem]=useState(0)
 
 const {resId}=useParams()
 
@@ -23,6 +24,12 @@ const {resId}=useParams()
         const json=await data.json()
         console.log(json)
         setResInfo(json.data)
+    }
+
+    const addItemMenu=()=>{
+        setAddItem(addItem+1)
+        alert(`${name} Added succesfully`)
+
     }
     if(resInfo===null) return <Shimmer/>;
     const{name,city,areaName,cuisines,avgRating,costForTwoMessage,availabilityServiceabilityMessage,description}=resInfo?.cards[2]?.card?.card?.info;
@@ -42,7 +49,9 @@ const {resId}=useParams()
            <div style={{display:"flex",justifyContent:"center",alignItems:"center",gap:"5px",border: "1px solid #e9e9eb",padding:"8px",borderRadius:"6px",maxWidth:"60px"}}>
               <p style={{fontWeight:"bold"}} className="rating-icon">{avgRating} </p>
               <MdStars className="rating-icon"/>
+
            </div>
+           {/* <h2>{addItem} {itemCards.MENU_CDN_URL}</h2> */}
 
             </div>
             
@@ -62,7 +71,7 @@ const {resId}=useParams()
                             </div>
                             <div className="res-menu-image">
                             <div className="res-menu-img"><img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+item.card.info.imageId} alt="menu-img" className="menu-image"></img></div>
-                            <button className="add-item">ADD</button>
+                            <button className="add-item" onClick={addItemMenu}>ADD</button>
 
                             </div>
                             

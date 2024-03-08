@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { MdStars } from "react-icons/md";
 import { RES_CDN_URL } from "../constants";
+import TopRestaurnats from "./TopRestaurants"
 
 
 const Body = () => {
@@ -61,7 +62,6 @@ const Body = () => {
     // Determine which list of restaurants to display based on search query
     const displayList = searchQuery.length > 0 ? filteredResList : resList?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
-    const mainContent=resList?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     return (
         <div className="main">
             < input className="input"
