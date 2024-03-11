@@ -70,10 +70,11 @@ const Body = () => {
                 value={searchQuery}
                 onChange={handleSearchInputChange}
             />
+            <TopRestaurnats/>
             <div className="res-list">
             {displayList && displayList.map((item) => (
 
-                  <Link className="res-link" to={"/restaurants/"+item.info.id} key={item.info.id}>
+                <Link className="res-link" to={"/restaurants/"+item.info.id} key={item.info.id}>
                     <div className="res-card">
                        <div className="res-image-container"><img className="res-images" alt="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_100,h_100,c_fill/"+item.info.cloudinaryImageId} ></img></div>
                        <div className="card-body">

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { RES_CDN_URL } from "../constants";
 
 const TopRestaurants=()=>{
     const[topRest,setTopRest]=useState()
@@ -8,8 +9,10 @@ const TopRestaurants=()=>{
     },[])
 
     const getTopRes=async()=>{
-        const data=await fetch("")
-
+        const data=await fetch(RES_CDN_URL)
+        const json=await data.json()
+        console.log(json)
+        setTopRest(json.data)
     }
     return(
         <div>
