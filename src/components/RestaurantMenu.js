@@ -3,14 +3,14 @@ import Shimmer from "./Shimmer";
 import {useParams} from 'react-router-dom'
 import { MENU_CDN_URL } from "../constants";
 import { MdStars } from "react-icons/md";
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const RestaurantMenu=()=>{
 
     const[resInfo,setResInfo]=useState(null)
-    const[addItem,setAddItem]=useState(0)
+    // const[addItem,setAddItem]=useState(0)
 
 const {resId}=useParams()
 
@@ -29,12 +29,13 @@ const {resId}=useParams()
     }
 
     const addItemMenu=(itemName)=>{
-        setAddItem(addItem+1)
-        alert(`${itemName} added Successfully`)
-        // toast(`${itemName} added Successfully`)
+        // alert(`${itemName} added Successfully`)
+        toast(`${itemName} Added Successfully`)
+        // setAddItem(addItem+1)
+
 
     }
-    if(resInfo===null) return <Shimmer/>;
+    if(!resInfo) return <Shimmer/>;
     const{name,city,areaName,cuisines,avgRating,costForTwoMessage,availabilityServiceabilityMessage,description}=resInfo?.cards[2]?.card?.card?.info;
     const{itemCards}=resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
     console.log(itemCards)
@@ -75,7 +76,7 @@ const {resId}=useParams()
                             <div className="res-menu-image">
                             <div className="res-menu-img"><img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+item.card.info.imageId} alt="menu-img" className="menu-image"></img></div>
                             <button className="add-item" onClick={()=>addItemMenu(item.card.info.name)}>ADD</button>
-                            {/* <ToastContainer/> */}
+                            <ToastContainer className="toast-container"/>
                             </div>
                             
                         </div>

@@ -273,3 +273,6 @@ h2.offer{
   list-style: none;
   text-decoration: none;
 }
+.toast-container{
+  --toastify-color-progress-light: #07bc0c;
+}
