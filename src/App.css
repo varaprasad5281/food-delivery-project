@@ -12,8 +12,10 @@ h1{
   line-height: normal;
 }
 .logo {
-  color: white;
+  color: #ffa700;
   text-decoration: none;
+  font-weight: bold;
+  font-family: cursive;
 }
 .res-card{
 text-align: left;
@@ -85,10 +87,11 @@ h2.offer{
 }  
 .list-items a{
   text-decoration: none;
+  padding: 8px 13px;
+font-weight: 600;
 
 }
  .list-items li{
-  padding: 8px 13px;
   color: white;
   text-transform: uppercase;
   
@@ -97,10 +100,15 @@ h2.offer{
   border-radius: 10px;
   font-size: 18px;
 }
+.cart-icon{
+  padding: 7px;
+  margin-right: 5px;
+  color:orange;
+}
+
 .list-items li:hover{
   font-weight: bold;
-  background-color:orange;
-  color: black;
+  color: #ffa700;
 }
 .res-images{
   position: relative;
@@ -118,7 +126,7 @@ h2.offer{
 }
 .input{
   padding: 8px 13px;
-  width:fit-content;
+  max-width: 220px;
   border-radius: 4px;
   border:2px solid orange;
 }
@@ -275,4 +283,7 @@ h2.offer{
 }
 .toast-container{
   --toastify-color-progress-light: #07bc0c;
+  --toastify-z-index:0;
+  --toastify-text-color-light: orangered;
 }
+
