@@ -11,6 +11,7 @@ import { Contact } from './components/Contact';
 import Error from './components/Error';
 import Footer from './components/Footer';
 import RestaurantMenu from './components/RestaurantMenu';
+import Cart from './components/Cart';
 const App=()=> {
 
   return (
@@ -38,6 +39,10 @@ const router=createBrowserRouter([
       {
         path:"/contact",
         element:<Contact/>,
+      },
+      {
+        path:"/cart",
+        element:<Cart/>
       },
       {
         path:"/restaurants/:resId", //Where resId represents the dynamic routing of each and individual restaurants
