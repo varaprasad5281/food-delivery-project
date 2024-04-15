@@ -4,6 +4,9 @@
   margin: 0;
   line-height: normal;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   list-style: none;
   text-decoration: none;
   font-family:'Segoe UI'
@@ -38,6 +41,8 @@ text-align: left;
 }
 .restaurant-list{
   display:grid;
+  height:100%;
+  margin-top: 300px;
   grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
 
 }
@@ -65,11 +70,6 @@ h2.offer{
   background-color: black;
   color: white;
   padding:8px 50px;
-  position: fixed;
-  top:0 ;
-  left: 0;
-  right: 0;
-  z-index: 10;
 }
 @media (max-width:500px){
   .nav{
