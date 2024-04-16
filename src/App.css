@@ -4,6 +4,9 @@
   margin: 0;
   line-height: normal;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   list-style: none;
   text-decoration: none;
   font-family:'Segoe UI'
@@ -38,6 +41,8 @@ text-align: left;
 }
 .restaurant-list{
   display:grid;
+  height:100%;
+  margin-top: 300px;
   grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
 
 }
@@ -65,11 +70,6 @@ h2.offer{
   background-color: black;
   color: white;
   padding:8px 50px;
-  position: fixed;
-  top:0 ;
-  left: 0;
-  right: 0;
-  z-index: 10;
 }
 @media (max-width:500px){
   .nav{
@@ -287,3 +287,28 @@ font-weight: 600;
   --toastify-text-color-light: orangered;
 }
 
+.social-media{
+  display: flex;
+  gap: 20px;
+  font-size: 25px;
+}
+.twitter:hover{
+  color: #ee9c00;
+  transform: scale(1.3);
+  transition: 0.5s;
+}
+.linkedin:hover{
+  color: #ee9c00;
+  transform: scale(1.3);
+  transition: 0.5s;
+}
+.facebook:hover{
+  color: #ee9c00;
+  transform: scale(1.3);
+  transition: 0.5s;
+}
+.instagram:hover{
+  color: #ee9c00;
+  transform: scale(1.3);
+  transition: 0.5s;
+}
