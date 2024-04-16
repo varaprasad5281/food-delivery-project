@@ -74,7 +74,9 @@ const {resId}=useParams()
                               <p>{item.card.info.description}</p>
                             </div>
                             <div className="res-menu-image">
-                            <div className="res-menu-img"><img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+item.card.info.imageId} alt="menu-img" className="menu-image"></img></div>
+                            <div className="res-menu-img">
+                                { item.card.info.imageId && <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+item.card.info.imageId } alt="menu-img" className="menu-image"></img>
+                            }</div>
                             <button className="add-item" onClick={()=>addItemMenu(item.card.info.name)}>ADD</button>
                             <ToastContainer className="toast-container"/>
                             </div>
