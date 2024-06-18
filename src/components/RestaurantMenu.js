@@ -27,6 +27,7 @@ const {resId}=useParams()
         console.log(json)
         setResInfo(json.data)
     }
+    
 
     const addItemMenu=(itemName)=>{
         // alert(`${itemName} added Successfully`)

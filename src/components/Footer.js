@@ -43,8 +43,10 @@ const Footer=()=>{
                      <FaInstagram className="instagram"/>
                      <FaFacebookSquare className="facebook" />
                    </div>
+                   <p>VARA PRASAD KANUGULA</p>
                 </div>
             </div>
+            
         </div>
     )
 }
