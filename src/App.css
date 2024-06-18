@@ -111,6 +111,9 @@ font-weight: 600;
   color: #ffa700;
 }
 .res-images{
+  width: 100%;
+    height: 100%;
+    object-fit: cover;
   position: relative;
   width:100%;
   overflow-clip-margin: content-box;

@@ -17,12 +17,13 @@ const Body = () => {
         getRestaurant();
     }, []); //If there is no dependency array then it will called after every render : If it is empty then it will be called once(only initial Render):if there is a dependency array then it will called every update inside the dependency array
     useEffect(() => {
-        if (resList) {
-            filterRestaurants();
-        }else{
-            <h1>Oh No! There is No Results Found</h1>
-        }
-    }, [resList, searchQuery]);
+    if (resList) {
+        filterRestaurants();
+    } else {
+        <h1>Oh No! There is No Results Found</h1>
+    }
+}, [resList, searchQuery]);
+
 
     async function getRestaurant() {
         try {
@@ -31,14 +32,15 @@ const Body = () => {
                 throw new Error("Failed to fetch data");
             }
             const json = await response.json();
-            console.log(json)
             setRestaurantList(json.data);
+            setLoading(false); // Ensure loading state is updated
         } catch (error) {
             setError(error.message);
-        } finally {
-            setLoading(false);
+            setLoading(false); // Ensure loading state is updated even in case of error
         }
     }
+    
+    
 
     function filterRestaurants() {
         const filteredList = resList?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants?.filter(item =>
@@ -46,6 +48,7 @@ const Body = () => {
         );
         setFilteredResList(filteredList);
     }
+    
 
     function handleSearchInputChange(event) {
         setSearchQuery(event.target.value);
@@ -76,7 +79,7 @@ const Body = () => {
 
                 <Link className="res-link" to={"/restaurants/"+item.info.id} key={item.info.id}>
                     <div className="res-card">
-                       <div className="res-image-container"><img className="res-images" alt="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_100,h_100,c_fill/"+item.info.cloudinaryImageId} ></img></div>
+                       <div className="res-image-container"><img className="res-images" alt="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+item.info.cloudinaryImageId} ></img></div>
                        <div className="card-body">
                           <p className="res-name">{item.info.name}</p>
                           <p className="res-rating"><MdStars className="rating-icon" /> {item?.info?.avgRating} - {item.info.sla.slaString}</p>

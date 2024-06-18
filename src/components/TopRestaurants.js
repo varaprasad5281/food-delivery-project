@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { RES_CDN_URL } from "../constants";
 
 const TopRestaurants=()=>{
-    const[topRest,setTopRest]=useState()
+    const[topRest,setTopRest]=useState([])
 
     useEffect(()=>{
         getTopRes()
