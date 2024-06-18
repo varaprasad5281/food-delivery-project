@@ -24,7 +24,7 @@ const RestaurantMenu = () => {
         throw new Error("Failed to fetch menu");
       }
       const json = await response.json();
-      console.log(json);
+      console.log("Fetched menu data:", json);
       setResInfo(json.data);
       setLoading(false); // Set loading to false after data is fetched
     } catch (error) {
@@ -32,11 +32,7 @@ const RestaurantMenu = () => {
       setError(error.message);
       setLoading(false); // Set loading to false in case of error
     }
-<<<<<<< HEAD
-    
-=======
   };
->>>>>>> 324756d408265cdb6a034d65a857dd33ec16b7c2
 
   const addItemMenu = (itemName) => {
     toast(`${itemName} Added Successfully`);
@@ -55,11 +51,10 @@ const RestaurantMenu = () => {
     costForTwoMessage,
     availabilityServiceabilityMessage,
     description,
-  } = resInfo?.cards[2]?.card?.card?.info || {};
+  } = resInfo?.cards?.find(card => card?.card?.card?.info)?.card?.card?.info || {};
 
   const itemCards =
-    resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
-      ?.itemCards || [];
+    resInfo?.cards?.find(card => card?.groupedCard?.cardGroupMap?.REGULAR)?.groupedCard?.cardGroupMap?.REGULAR?.cards?.find(card => card?.card?.card?.itemCards)?.card?.card?.itemCards || [];
 
   return (
     <div className="res-menu">
