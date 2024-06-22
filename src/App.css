@@ -39,7 +39,7 @@ h1 {
 
 .shimmer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 20px;
 }
 
@@ -52,8 +52,8 @@ h1 {
 }
 
 .shimer-card {
-  height: 350px;
-  background-color: lightgrey;
+  height: 320px;
+  background-color: #ebe8e8;
   margin: 20px;
   border-radius: 15px;
 }
@@ -70,13 +70,17 @@ h2.offer {
 }
 
 .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  right: 0;
   height: 80px;
-  background-color: black;
-  color: white;
-  padding: 8px 50px;
+  background: #000;
+  z-index: 1000;
+  transform: translateZ(0);
+  padding: 0 20px;
 }
 
 @media (max-width:500px) {
@@ -180,6 +184,7 @@ h2.offer {
   justify-content: space-between;
   align-items: center;
   gap: 30px;
+
   padding: 20px 0px;
 }
 
@@ -270,8 +275,9 @@ h2.offer {
 }
 
 .res-menu {
-  max-width: 1000px;
+  max-width: 900px;
   padding-top: 100px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -325,8 +331,8 @@ h2.offer {
 
 .toast-container {
   --toastify-color-progress-light: #07bc0c;
-  --toastify-z-index: 0;
   --toastify-text-color-light: orangered;
+  margin-top:  70px !important;
 }
 
 .social-media {
