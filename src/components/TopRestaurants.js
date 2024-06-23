@@ -16,7 +16,7 @@ const TopRestaurants = () => {
   };
   return (
     <div>
-      <h1>Top Restaurants</h1>
+      <h1>Available Restaurants</h1>
     </div>
   );
 };

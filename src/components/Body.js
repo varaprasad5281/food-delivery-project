@@ -11,6 +11,7 @@ const Body = () => {
     const [error, setError] = useState(null);
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredResList, setFilteredResList] = useState([]);
+    const [showTopRated, setShowTopRated] = useState(false);
 
     useEffect(() => {
         getRestaurant();
@@ -20,7 +21,7 @@ const Body = () => {
         if (resList.length > 0) {
             filterRestaurants();
         }
-    }, [resList, searchQuery]);
+    }, [resList, searchQuery, showTopRated]);
 
     async function getRestaurant() {
         try {
@@ -42,15 +43,25 @@ const Body = () => {
     }
 
     function filterRestaurants() {
-        const filteredList = resList.filter(item =>
-            item.info.name.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        let filteredList = resList;
+        if (searchQuery) {
+            filteredList = filteredList.filter(item =>
+                item.info.name.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
+        if (showTopRated) {
+            filteredList = filteredList.filter(item => item.info.avgRating > 4.2);
+        }
         console.log("Filtered restaurants:", filteredList);
         setFilteredResList(filteredList);
     }
 
     function handleSearchInputChange(event) {
         setSearchQuery(event.target.value);
+    }
+
+    function handleShowTopRated() {
+        setShowTopRated(prevState => !prevState);
     }
 
     if (loading) {
@@ -61,7 +72,7 @@ const Body = () => {
         return <div>Error: {error}</div>;
     }
 
-    const displayList = searchQuery.length > 0 ? filteredResList : resList;
+    const displayList = searchQuery.length > 0 || showTopRated ? filteredResList : resList;
 
     if (displayList.length === 0) {
         return <h1>Oh No! There are No Results Found</h1>;
@@ -69,24 +80,36 @@ const Body = () => {
 
     return (
         <div className="main">
-            <input className="input"
-                type="text"
-                placeholder="Search restaurant..."
-                value={searchQuery}
-                onChange={handleSearchInputChange}
-            />
+            <div className="filter-section">
+                <input
+                    className="input"
+                    type="text"
+                    placeholder="Search restaurant..."
+                    value={searchQuery}
+                    onChange={handleSearchInputChange}
+                />
+                <button className="filter-btn" onClick={handleShowTopRated}>
+                    {showTopRated ? "Show All Restaurants" : "Show Top Rated Restaurants"}
+                </button>
+
+            </div>
+
             <TopRestaurants />
             <div className="res-list">
                 {displayList.map((item) => (
                     <Link className="res-link" to={"/restaurants/" + item.info.id} key={item.info.id}>
                         <div className="res-card">
                             <div className="res-image-container">
-                                <img className="res-images" alt="res-img" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + item.info.cloudinaryImageId} />
+                                <img
+                                    className="res-images"
+                                    alt="res-img"
+                                    src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + item.info.cloudinaryImageId}
+                                />
                             </div>
                             <div className="card-body">
                                 <p className="res-name">{item.info.name}</p>
                                 <p className="res-rating"><MdStars className="rating-icon" /> {item?.info?.avgRating} - {item.info.sla.slaString}</p>
-                                <h2 className="offer"> {item.info.aggregatedDiscountInfoV2?.header}</h2>
+                                <h2 className="offer">{item.info.aggregatedDiscountInfoV2?.header}</h2>
                                 <p className="res-cuisines">{item.info.cuisines.join(", ")}</p>
                                 <p className="res-area" key={item.id}>{item.info.areaName}</p>
                             </div>
