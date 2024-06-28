@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { MdStars } from "react-icons/md";
-import { RES_CDN_URL } from "../constants";
+import { RES_CDN_URL } from "../utils/constants";
 import TopRestaurants from "./TopRestaurants";
 
 const Body = () => {

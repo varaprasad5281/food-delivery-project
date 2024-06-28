@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RES_CDN_URL } from "../constants";
+import { RES_CDN_URL } from "../utils/constants";
 
 const TopRestaurants = () => {
   const [topRest, setTopRest] = useState([]);
