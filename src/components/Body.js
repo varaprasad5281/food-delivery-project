@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { MdStars } from "react-icons/md";
 import { RES_CDN_URL } from "../utils/constants";
 import TopRestaurants from "./TopRestaurants";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
     const [resList, setRestaurantList] = useState([]);
@@ -13,9 +14,11 @@ const Body = () => {
     const [filteredResList, setFilteredResList] = useState([]);
     const [showTopRated, setShowTopRated] = useState(false);
 
+    const onlineStatus = useOnline()
     useEffect(() => {
         getRestaurant();
     }, []);
+
 
     useEffect(() => {
         if (resList.length > 0) {
@@ -78,6 +81,14 @@ const Body = () => {
         return <h1>Oh No! There are No Results Found</h1>;
     }
 
+    if (onlineStatus === false) {
+        return (
+            <h1 className="online-status">Looks like you are offline, Please check your Internet Connection !!</h1>
+        )
+    }
+
+
+
     return (
         <div className="main">
             <div className="filter-section">
@@ -103,6 +114,7 @@ const Body = () => {
                                 <img
                                     className="res-images"
                                     alt="res-img"
+                                    loading="lazy"
                                     src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + item.info.cloudinaryImageId}
                                 />
                             </div>

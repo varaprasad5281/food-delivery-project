@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className="nav">
-      <h1>
+      <label className="logo">
         <Link className="logo">HONEY'S</Link>
-      </h1>
+      </label>
       <ul className="list-items">
         <Link>
           <li>Home</li>
@@ -14,6 +14,9 @@ const Header = () => {
         </Link>
         <Link to="/contact">
           <li>Contact</li>
+        </Link>
+        <Link to="/grocery">
+          <li>Grocery</li>
         </Link>
         <Link to="/cart">
           <li>

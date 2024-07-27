@@ -1,38 +1,15 @@
-import React, { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MENU_CDN_URL } from "../utils/constants";
 import { MdStars } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useRestaurantMenu from "../utils/useResturantMenu";
+import Shimmer from "./Shimmer";
+import useOnline from "../utils/useOnline";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const { resId } = useParams();
-
-  useEffect(() => {
-    fetchMenu();
-  }, [resId]); // Run the effect when resId changes
-
-  const fetchMenu = async () => {
-    try {
-      setLoading(true); // Set loading to true before fetching data
-      const response = await fetch(`${MENU_CDN_URL}${resId}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch menu");
-      }
-      const json = await response.json();
-      console.log("Fetched menu data:", json);
-      setResInfo(json.data);
-      setLoading(false); // Set loading to false after data is fetched
-    } catch (error) {
-      console.error("Error fetching menu:", error);
-      setError(error.message);
-      setLoading(false); // Set loading to false in case of error
-    }
-  };
+  const { resInfo, error, loading } = useRestaurantMenu(resId);
+  const onlineStatus=useOnline()
 
   const addItemMenu = (itemName) => {
     toast(`${itemName} Added Successfully`);
@@ -55,7 +32,9 @@ const RestaurantMenu = () => {
 
   const itemCards =
     resInfo?.cards?.find(card => card?.groupedCard?.cardGroupMap?.REGULAR)?.groupedCard?.cardGroupMap?.REGULAR?.cards?.find(card => card?.card?.card?.itemCards)?.card?.card?.itemCards || [];
-
+  if(onlineStatus===false){
+    return <h1 className="online-status">Looks like you are offline, Please check your internet connection</h1>
+  }
   return (
     <div className="res-menu">
       <div

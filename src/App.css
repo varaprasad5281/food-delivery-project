@@ -17,6 +17,7 @@ h1 {
 }
 
 .logo {
+  font-size: 24px;
   color: #ffa700;
   text-decoration: none;
   font-weight: bold;
@@ -30,6 +31,9 @@ h1 {
   padding: 20px;
   height: auto;
 
+}
+.online-status{
+  margin-top: 100px;
 }
 
 .res-list {
@@ -74,6 +78,7 @@ h2.offer {
   top: 0;
   left: 0;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   right: 0;
   height: 80px;
