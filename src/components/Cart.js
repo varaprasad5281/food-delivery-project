@@ -1,12 +1,25 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ItemList from "./ItemList";
+import { clearCart } from "../utils/cartSlice";
 
-const Cart=()=>{
-    const cartItems=useSelector((store)=>store.cart.items)
-    return(
-        <div>
-            <h1>This is cart page</h1>
-            <ItemList items={cartItems}/>
+const Cart = () => {
+
+    // 
+    const cartItems = useSelector((store) => store.cart.items)
+    const dispatch=useDispatch()
+    const handleClearCart=()=>{
+        dispatch(clearCart())
+    }
+    return (
+        <div className="res-menu">
+            <h1>Your cart items</h1>
+            <div>
+                <button className='clear-cart-btn' onClick={handleClearCart}>Clear Cart</button>
+
+                {cartItems.length===0?<h1>There No Items were Added</h1>: <ItemList items={cartItems} />}
+               
+
+            </div>
         </div>
     )
 }
