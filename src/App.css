@@ -79,6 +79,7 @@ h2.offer {
   left: 0;
   display: flex;
   align-items: center;
+  /* justify-content: center; */
   justify-content: space-between;
   right: 0;
   height: 80px;
@@ -391,4 +392,12 @@ h2.offer {
   color: #ee9c00;
   transform: scale(1.3);
   transition: 0.5s;
+}
+.item-category{
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  gap: 5px;
+  width: 100%;
+  background-color: lightgray;
 }

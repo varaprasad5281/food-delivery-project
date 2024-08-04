@@ -13,16 +13,21 @@ import Footer from './components/Footer';
 import RestaurantMenu from './components/RestaurantMenu';
 import Cart from './components/Cart';
 import Shimmer from './components/Shimmer';
+import { Provider } from 'react-redux'
+import appStore from './utils/appStore';
 
 const Grocery = lazy(() => import('./components/Grocery'))
 const App = () => {
 
   return (
-    <div className="App">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <Provider store={appStore}>
+      <div className="App">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </Provider>
+
   );
 }
 export default App
