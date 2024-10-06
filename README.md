@@ -80,3 +80,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -- Install React-Testing-library
 -- Install Jest with babel dependencies
 -- Create a root level file called babel.config.js and pasted the code here
+
+-- Configure parcel config file to disable default bebel transipilation
