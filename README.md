@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Types of Testing
+
+-- Unit testing
+-- Integration Testing
+-- End to End Testing (E2E)
+
+# Setting up Testing in Our App
+
+-- Install React-Testing-library
+-- Install Jest with babel dependencies
+-- Create a root level file called babel.config.js and pasted the code here

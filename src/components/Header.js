@@ -7,8 +7,8 @@ import { useSelector } from "react-redux";
 const Header = () => {
   // const {userName}=useContext(UserContext)
   // subscribing our store using selector
-  const cartItems=useSelector((store)=>store.cart.items)  //Reading the store
-  console.log(cartItems)
+  const cartItems = useSelector((store) => store.cart.items); //Reading the store
+  console.log(cartItems);
   return (
     <div className="nav">
       <label className="logo">
@@ -29,7 +29,8 @@ const Header = () => {
         </Link>
         <Link to="/cart">
           <li>
-            <span className="cart-icon">{cartItems.length}</span><BsCart />
+            <span className="cart-icon">{cartItems.length}</span>
+            <BsCart />
           </li>
         </Link>
         {/* <Link to="/user">
