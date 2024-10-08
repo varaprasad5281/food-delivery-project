@@ -5,6 +5,7 @@ import { MdStars } from "react-icons/md";
 import { RES_CDN_URL } from "../utils/constants";
 import TopRestaurants from "./TopRestaurants";
 import useOnline from "../utils/useOnline";
+import useGeoLocation from "../utils/useGeoLocation";
 
 const Body = () => {
   const [resList, setRestaurantList] = useState([]);
@@ -15,6 +16,11 @@ const Body = () => {
   const [showTopRated, setShowTopRated] = useState(false);
 
   const onlineStatus = useOnline();
+
+  // User Location Custom
+  const location = useGeoLocation();
+  console.log("location deatils", location);
+
   useEffect(() => {
     getRestaurant();
   }, []);
