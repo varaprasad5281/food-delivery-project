@@ -2,6 +2,11 @@ import React from "react";
 import { IMG_CDN_URL } from "../utils/constants";
 
 const ItemList = ({ items, handleAddItem }) => {
+  const totalPrice = items.reduce(
+    (acc, curr) => acc + (curr?.card?.info?.price || 0),
+    0
+  );
+  if (items.filter) console.log("Total price", totalPrice);
   return (
     <div>
       <div className="item-description">
@@ -43,6 +48,11 @@ const ItemList = ({ items, handleAddItem }) => {
               <div className="menu-divider"></div>
             </div>
           ))}
+        <div className="price-bar">
+          <h2>Total Price: </h2>
+          <h2>Rs - {totalPrice / 100}</h2>
+        </div>
+        <div className="menu-divider"></div>
       </div>
     </div>
   );

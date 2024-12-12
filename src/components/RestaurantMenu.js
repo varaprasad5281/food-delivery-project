@@ -9,6 +9,7 @@ import useOnline from "../utils/useOnline";
 import ItemList from "./ItemList"; // Import the new ItemList component
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
+import { BoxesLoaderComponent } from "./MenuShimmer";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
