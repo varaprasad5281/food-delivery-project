@@ -1,7 +1,11 @@
 import React from "react";
-import { IMG_CDN_URL } from "../utils/constants";
+import { useLocation } from "react-router-dom";
 
 const ItemList = ({ items, handleAddItem }) => {
+  const currentLocation = useLocation();
+  const isPath = currentLocation.pathname === "/cart";
+  console.log(isPath);
+  console.log(currentLocation);
   const totalPrice = items.reduce(
     (acc, curr) => acc + (curr?.card?.info?.price || 0),
     0
@@ -48,10 +52,15 @@ const ItemList = ({ items, handleAddItem }) => {
               <div className="menu-divider"></div>
             </div>
           ))}
-        <div className="price-bar">
-          <h2>Total Price: </h2>
-          <h2>Rs - {totalPrice / 100}</h2>
-        </div>
+        {isPath ? (
+          <>
+            <div className="price-bar">
+              <h2>Total Price: </h2>
+              <h2>Rs. {totalPrice / 100}</h2>
+            </div>
+          </>
+        ) : null}
+
         <div className="menu-divider"></div>
       </div>
     </div>
